@@ -14,7 +14,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 {
-	this->value_ = (int)(roundf(value * (1 << this->fractional_bits_)));
+	this->value_ = static_cast<int>(roundf(value * (1 << this->fractional_bits_)));
 }
 
 Fixed::Fixed(const Fixed &other)
@@ -40,7 +40,7 @@ Fixed::~Fixed()
 
 float Fixed::toFloat() const
 {
-	return (float)this->value_ / (1 << this->fractional_bits_);
+	return static_cast<float>(this->value_) / (1 << this->fractional_bits_);
 }
 
 int Fixed::toInt() const
