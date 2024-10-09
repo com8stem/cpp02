@@ -4,7 +4,6 @@
 Fixed::Fixed()
 {
 	setRawBits(0);
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value)
@@ -19,13 +18,11 @@ Fixed::Fixed(const float value)
 
 Fixed::Fixed(const Fixed &other)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->value_ = other.getRawBits();
@@ -35,7 +32,6 @@ Fixed &Fixed::operator=(const Fixed &other)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 float Fixed::toFloat() const
@@ -50,7 +46,6 @@ int Fixed::toInt() const
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->value_;
 }
 
@@ -77,12 +72,12 @@ Fixed operator-(Fixed const &a, Fixed const &b)
 
 Fixed operator*(Fixed const &a, Fixed const &b)
 {
-	return Fixed(a.toFloat() - b.toFloat());
+	return Fixed(a.toFloat() * b.toFloat());
 }
 
 Fixed operator/(Fixed const &a, Fixed const &b)
 {
-	return Fixed(a.toFloat() - b.toFloat());
+	return Fixed(a.toFloat() / b.toFloat());
 }
 
 Fixed operator++(Fixed &a)
@@ -141,28 +136,28 @@ bool operator!=(Fixed const &a, Fixed const &b)
 	return a.toFloat() != b.toFloat();
 }
 
-const Fixed& max(Fixed const &a, Fixed const &b)
+Fixed const &Fixed::max(Fixed const &a, Fixed const &b)
 {
 	if (a.toFloat() > b.toFloat())
 		return a;
 	return b;
 }
 
-Fixed& max(Fixed &a, Fixed &b)
+Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a.toFloat() > b.toFloat())
 		return a;
 	return b;
 }
 
-const Fixed& min(Fixed const &a, Fixed const &b)
+Fixed const &Fixed::min(Fixed const &a, Fixed const &b)
 {
 	if (a.toFloat() < b.toFloat())
 		return a;
 	return b;
 }
 
-Fixed& min(Fixed &a, Fixed &b)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a.toFloat() < b.toFloat())
 		return a;
