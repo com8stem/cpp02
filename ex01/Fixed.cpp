@@ -9,11 +9,13 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int value)
 {
+	std::cout << "Int constructor called" << std::endl;
 	setRawBits(value << this->fractional_bits_);
 }
 
 Fixed::Fixed(const float value)
 {
+	std::cout << "Float constructor called" << std::endl;
 	setRawBits(static_cast<int>(roundf(value * (1 << this->fractional_bits_))));
 }
 
@@ -50,7 +52,6 @@ int Fixed::toInt() const
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->value_;
 }
 
