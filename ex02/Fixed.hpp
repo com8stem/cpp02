@@ -25,25 +25,25 @@ public:
 	static Fixed &max(Fixed &a, Fixed &b);
 	static Fixed const &min(Fixed const &a, Fixed const &b);
 	static Fixed &min(Fixed &a, Fixed &b);
+	Fixed operator+(Fixed const &other) const;
+	Fixed operator-(Fixed const &other) const;
+	Fixed operator*(Fixed const &other) const;
+	Fixed operator/(Fixed const &other) const;
+	Fixed operator++();
+	Fixed operator++(int);
+	Fixed operator--();
+	Fixed operator--(int);
+	bool operator>(Fixed const &other) const;
+	bool operator<(Fixed const &other) const;
+	bool operator>=(Fixed const &other) const;
+	bool operator<=(Fixed const &other) const;
+	bool operator==(Fixed const &other) const;
+	bool operator!=(Fixed const &other) const;
 
 	int getRawBits() const;
 	void setRawBits(int const raw);
 };
 
 std::ostream &operator<<(std::ostream &out, Fixed const &value);
-Fixed operator+(Fixed const &a, Fixed const &b);
-Fixed operator-(Fixed const &a, Fixed const &b);
-Fixed operator*(Fixed const &a, Fixed const &b);
-Fixed operator/(Fixed const &a, Fixed const &b);
-Fixed operator++(Fixed &a);
-Fixed operator++(Fixed &a, int);
-Fixed operator--(Fixed &a);
-Fixed operator--(Fixed &a, int);
-bool operator>(Fixed const &a, Fixed const &b);
-bool operator<(Fixed const &a, Fixed const &b);
-bool operator>=(Fixed const &a, Fixed const &b);
-bool operator<=(Fixed const &a, Fixed const &b);
-bool operator==(Fixed const &a, Fixed const &b);
-bool operator!=(Fixed const &a, Fixed const &b);
 
 #endif
